@@ -14,7 +14,7 @@
   "module": "dist/rex.es5.js",
   "typings": "dist/types/rex.d.ts",
   "files": [
-    "dist"
+    "dist", "lib"
   ],
   "author": "areknawo",
   "homepage": "https://areknawo.github.io/Rex",
