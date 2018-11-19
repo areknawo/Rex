@@ -1,10 +1,5 @@
-<center>
-  <img src="./logo.png" width="250"/>
-<center>
-<center align="center">
-ReX.js
-<p>Your RegEx companion.</p>
-</center>
+# ReX.js
+***Your RegEx companion.***
 
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)
 
