@@ -1,0 +1,11 @@
+{
+	"name": "ReX.js",
+	"target": "es6",
+	"theme": "markdown",
+	"readme": "none",
+	"mode": "file",
+	"excludePrivate": true,
+	"excludeProtected": true,
+	"hideGenerator": true,
+	"out": "docs/api"
+}

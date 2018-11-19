@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "tslint-config-airbnb",
+    "tslint-clean-code",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "typedef": true,
+    "variable-name": false,
+    "match-default-export-name": false,
+    "member-access": true,
+    "strict-type-predicates": true,
+    "space-within-parens": true,
+    "no-irregular-whitespace": true,
+    "newline-before-return":true,
+    "trailing-comma":true,
+    "semicolon":false,
+    "completed-docs": true,
+    "jsdoc-format": true
+  },
+  "linterOptions": {
+    "exclude": ["**/node_modules/**"]
+  }
+}

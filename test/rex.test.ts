@@ -1,0 +1,6 @@
+import './extensions.test'
+import './matcher.test'
+import './replacer.test'
+import './operation.test'
+import './rexer.test'
+import './exceptions.test'
