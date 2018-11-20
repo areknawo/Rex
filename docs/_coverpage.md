@@ -6,7 +6,7 @@
 
 - Intuitive API
 - Easily extendable
-- Extreamly small (~8kB gzipped)
+- Extremly small (~4kB gzipped)
 
 [GitHub](https://github.com/areknawo/rex)
 [Get Started](basic.md)

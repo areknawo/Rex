@@ -1,4 +1,5 @@
 * [Getting Started](/basic.md)
 * [Advanced Usage](/advanced.md)
-* [ReXsome](/awesome.md)
+* [Help](/contributing.md)
 * [API](/api/README.md)
+* [ReXsome](/awesome.md)

@@ -1,6 +1,6 @@
 {
   "name": "@areknawo/rex",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "Your RegEx companion.",
   "keywords": [
     "regex",
@@ -14,7 +14,8 @@
   "module": "dist/rex.es5.js",
   "typings": "dist/types/rex.d.ts",
   "files": [
-    "dist", "lib"
+    "dist",
+    "lib"
   ],
   "author": "areknawo",
   "homepage": "https://areknawo.github.io/Rex",
@@ -32,7 +33,8 @@
     "build": "rollup -c rollup.config.ts && cpx 'src/**/*.ts' lib",
     "docs": "typedoc --options typedoc.json",
     "start": "rollup -c rollup.config.ts -w",
-    "test": "jest",
+    "size": "size-limit",
+    "test": "jest && npm run size",
     "test:watch": "jest --watch",
     "test:prod": "npm run lint && npm run test -- --coverage --no-cache",
     "deploy-docs": "ts-node tools/gh-pages-publish",
@@ -45,6 +47,12 @@
     "commitmsg": "validate-commit-msg",
     "travis-deploy-once": "travis-deploy-once"
   },
+  "size-limit": [
+    {
+      "limit": "4KB",
+      "path": "dist/rex.umd.js"
+    }
+  ],
   "lint-staged": {
     "{src,test}/**/*.ts": [
       "prettier --write",
@@ -127,7 +135,9 @@
     "rollup-plugin-terser": "^3.0.0",
     "rollup-plugin-typescript2": "^0.11.1",
     "semantic-release": "^15.12.0",
+    "size-limit": "^0.21.0",
     "strict-tslint-config": "^1.0.1",
+    "travis-deploy-once": "^5.0.9",
     "ts-jest": "^22.0.0",
     "ts-node": "^6.0.0",
     "tslint": "^5.8.0",
@@ -141,8 +151,7 @@
     "typedoc-plugin-markdown": "^1.1.18",
     "typedoc-plugin-single-line-tags": "^1.0.0",
     "typescript": "^3.1.6",
-    "validate-commit-msg": "^2.12.2",
-    "travis-deploy-once": "^5.0.9"
+    "validate-commit-msg": "^2.12.2"
   },
   "dependencies": {}
 }
