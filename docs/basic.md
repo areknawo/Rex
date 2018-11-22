@@ -54,3 +54,5 @@ As you can see one of main advantages of using this library is ability to docume
 ## References
 
 !> Look behinds are implemented in form of preceding group checks, so they will work for most of normal use cases but not for all. Take a look at ***Polyfiller*** class in code if you want to explore it deeper.
+
+?> The introductory tutorial is available on [dev.to website](https://dev.to/areknawo/the-more-proper-introduction-to-rexjs-e72).
