@@ -10584,14 +10584,14 @@ tslint-clean-code@^0.2.7:
     memoize-decorator "^1.0.2"
     tsutils "2.7.1"
 
-tslint-config-airbnb@^5.9.2:
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/tslint-config-airbnb/-/tslint-config-airbnb-5.11.0.tgz#4477fa64e2d8b4282b43666d6a34925c766cc949"
-  integrity sha512-o2FhaQtxXi6FQ1v0T2n/rACNos6PhuKRmvemMpWxI+9NJn2OOlJ3+OtEmnCdoF7GPXT3Eyk+Q0q4P96flrPl3w==
+tslint-config-airbnb@^5.11.1:
+  version "5.11.1"
+  resolved "https://registry.yarnpkg.com/tslint-config-airbnb/-/tslint-config-airbnb-5.11.1.tgz#51a27fbb8bf24c144d064a274a71da47e7ece617"
+  integrity sha512-hkaittm2607vVMe8eotANGN1CimD5tor7uoY3ypg2VTtEcDB/KGWYbJOz58t8LI4cWSyWtgqYQ5F0HwKxxhlkQ==
   dependencies:
-    tslint-consistent-codestyle "^1.13.3"
+    tslint-consistent-codestyle "^1.14.1"
     tslint-eslint-rules "^5.4.0"
-    tslint-microsoft-contrib "~5.2.0"
+    tslint-microsoft-contrib "~5.2.1"
 
 tslint-config-prettier@^1.17.0:
   version "1.17.0"
@@ -10610,7 +10610,7 @@ tslint-config-valorsoft@^2.2.1:
   resolved "https://registry.yarnpkg.com/tslint-config-valorsoft/-/tslint-config-valorsoft-2.2.1.tgz#25dab1b8a0d5e78cf674b9a616f3879ac91ca5f4"
   integrity sha512-0tMQrFGII2ffPwSwvL7ODBGRlLGuXakKLGDDcaILbJumdiZyQY8E+n1Hknb2RB7a7JT+A9iNl6jRS24O+kLcZA==
 
-tslint-consistent-codestyle@^1.13.3:
+tslint-consistent-codestyle@^1.14.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslint-consistent-codestyle/-/tslint-consistent-codestyle-1.14.1.tgz#8555f1b05ccbf093166a73347f41eb101731a522"
   integrity sha512-UxGRX2fF5LpZtqYpuPFaIva+2D7ASX3pTVw41yis6Hmw7PPA3cBnFEX1jqRsnyxGrca6mHxz7xDnwCHtOjWJMQ==
@@ -10628,7 +10628,7 @@ tslint-eslint-rules@^5.3.1, tslint-eslint-rules@^5.4.0:
     tslib "1.9.0"
     tsutils "^3.0.0"
 
-tslint-microsoft-contrib@~5.2.0:
+tslint-microsoft-contrib@~5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/tslint-microsoft-contrib/-/tslint-microsoft-contrib-5.2.1.tgz#a6286839f800e2591d041ea2800c77487844ad81"
   integrity sha512-PDYjvpo0gN9IfMULwKk0KpVOPMhU6cNoT9VwCOLeDl/QS8v8W2yspRpFFuUS7/c5EIH/n8ApMi8TxJAz1tfFUA==
