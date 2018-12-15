@@ -127,7 +127,7 @@
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.6.1",
     "rollup": "^0.67.4",
-    "rollup-plugin-babel-minify": "^6.1.1",
+    "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.0.0",
     "rollup-plugin-json": "^3.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
