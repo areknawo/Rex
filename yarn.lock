@@ -9511,10 +9511,10 @@ schema-utils@^1.0.0:
     ajv-errors "^1.0.0"
     ajv-keywords "^3.1.0"
 
-semantic-release@^15.12.5:
-  version "15.12.5"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.12.5.tgz#37845a99b9e26ebea1ea020fed05010d29e5a699"
-  integrity sha512-KA7guNbM5A3UIGx37CLdprBLLZ7KN5+lEO88Xnzo2pNa8B+gnJTUD+8/TxP7f9As7WT+rEPd8pdBu6a9FAquFQ==
+semantic-release@^15.13.0:
+  version "15.13.0"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-15.13.0.tgz#5e2cafb9c9d4114d97d639c701e13a74bc2eb214"
+  integrity sha512-ZTMaRA4v2t6XLj9uPVQx8w499EngMhE7fJtj4oX3XvH2QpCjiZQkvu+6v5gK9XYqMcimIcbY3hqcOInJMP+T1g==
   dependencies:
     "@semantic-release/commit-analyzer" "^6.1.0"
     "@semantic-release/error" "^2.2.0"
@@ -10593,7 +10593,7 @@ tslint-config-airbnb@^5.11.1:
     tslint-eslint-rules "^5.4.0"
     tslint-microsoft-contrib "~5.2.1"
 
-tslint-config-prettier@^1.17.0:
+tslint-config-prettier@^1.1.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/tslint-config-prettier/-/tslint-config-prettier-1.17.0.tgz#946ed6117f98f3659a65848279156d87628c33dc"
   integrity sha512-NKWNkThwqE4Snn4Cm6SZB7lV5RMDDFsBwz6fWUkTxOKGjMx8ycOHnjIbhn7dZd5XmssW3CwqUjlANR6EhP9YQw==
