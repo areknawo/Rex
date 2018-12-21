@@ -1,6 +1,6 @@
 ![logo](media/logo.svg ':size=200%')
 
-# ReX.js <small>v1.0.1</small>
+# ReX.js <small>v2.0.0</small>
 
 > Your RegEx companion.
 
