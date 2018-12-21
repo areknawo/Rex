@@ -62,4 +62,22 @@ describe('Exceptions', () => {
 
     expect(expr).toBeNull()
   })
+  test('Unextended unicodes', () => {
+    const expr = new Matcher().unicode('23').getExpr()
+
+    expect(expr).toBe('\\u23')
+  })
+  test('Invalid range', () => {
+    const expr = new Matcher().range('a', 'b', 'c').getExpr()
+
+    expect(expr).toBe('[a-b]')
+  })
+  test("Removing flag that doesn't exist", () => {
+    const expr = new Matcher()
+      .globalize()
+      .removeFlag('g')
+      .removeFlag('g')
+      .containsFlag('g')
+    expect(expr).toBeFalsy()
+  })
 })

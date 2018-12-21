@@ -79,19 +79,22 @@ export class Matcher extends ReXer {
     return this.parser.split(str, n)
   }
   /**
-   * Returns constructed matching expression.
+   * Sets beginning index to start parsing from.
+   * @param index Index to start parsing from.
    */
-  public getExpr = () => {
-    return this.stringifyChannel(0)
+  public setLastIndex = (index: number) => {
+    this.parser.lastIndex = index
+
+    return this
   }
   /**
-   * Inserts given expression to regEx.
+   * Inserts given texts to regEx (standard strings only - no regex).
    * Standard string characters are automatically escaped.
    * @param str - RegEx string to append.
    */
   public find = (str: string) => {
     const regEx: RegExp = /\+|\*|\?|\^|\$|\.|\[|\]|\{|\}|\(|\)|\||\/|\\/g
-    this.add(new Operation(str.replace(regEx, '\\$&')))
+    this.add(str.replace(regEx, '\\$&'))
 
     return this
   }
@@ -127,6 +130,8 @@ export class Matcher extends ReXer {
     if (index > -1) {
       flags.splice(index, 1)
       update(expr, flags.join(''))
+    } else {
+      console.warn('No such flag exist to remove - omitted!')
     }
 
     return this

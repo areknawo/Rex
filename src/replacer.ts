@@ -52,12 +52,6 @@ export class Replacer extends ReXer {
     return splitted.join('')
   }
   /**
-   * Returns constructed replacement expression.
-   */
-  public getExpr = () => {
-    return this.stringifyChannel(0)
-  }
-  /**
    * Generates, preprocesses & polyfills replacement expression.
    * @param matched - Result of Matcher execution.
    */

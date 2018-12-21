@@ -1,37 +1,36 @@
 /**
  * @module ReplaceExtension
  */
-import { Method } from '../rexer'
-import { Replacer } from '../replacer'
+import { Method, ReXer } from '../rexer'
 
 export interface ReplaceExtension {
   /**
-   * Includes matched string in its replacer.
+   * Includes matched string.
    */
-  matched(): Replacer
+  matched(): this
   /**
-   * Includes matched named group in replacer.
+   * Includes matched named group.
    * @param name - Name of the group to be referenced.
    */
-  captured(name: string): Replacer
+  captured(name: string): this
   /**
-   * Includes portion of string that precedes matched part in replacer.
+   * Includes portion of string that precedes matched part.
    */
-  beforeMatched(): Replacer
+  beforeMatched(): this
   /**
-   * Includes portion of string that follows matched part in replacer.
+   * Includes portion of string that follows matched part.
    */
-  afterMatched(): Replacer
+  afterMatched(): this
   /**
-   * Includes dollar character in replacer
+   * Includes dollar character.
    */
-  dollar(): Replacer
+  dollar(): this
 }
 
 /**
  * RegEx replacement-related methods ReX.js extension.
  */
-export const ReplaceExtension: Method<Replacer>[] = [
+export const ReplaceExtension: Method<ReXer>[] = [
   {
     name: 'matched',
     func() {

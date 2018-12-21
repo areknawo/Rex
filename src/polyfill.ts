@@ -90,7 +90,7 @@ export class Polyfiller {
   /**
    * Resets Polyfiller's data.
    */
-  public reset = () => {
+  public reset() {
     this.groupIndex = 0
     this.lookBehinds = {
       positive: [],
@@ -207,7 +207,7 @@ export class Polyfiller {
   /**
    * Maps polyfilled named groups.
    */
-  private mapNamedGroup = () => {
+  private mapNamedGroup() {
     this.preprocessedRegEx = this.preprocessedRegEx.replace(/\?<(\w+)>/, (matched, name) => {
       this.namedGroups[name] = this.groupIndex
 
@@ -217,7 +217,7 @@ export class Polyfiller {
   /**
    * Maps polyfilled named groups backreferences.
    */
-  private mapNamedGroupsBackreferences = () => {
+  private mapNamedGroupsBackreferences() {
     let index = -1
     for (let i = 0; i < this.regEx.length; i += 1) {
       index = this.regEx.indexOf('\\k<', index + 1)

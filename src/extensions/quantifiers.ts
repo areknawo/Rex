@@ -2,55 +2,75 @@
  * @module QuantifiersExtension
  */
 import { FuncExpr } from '../operation'
-import { Method } from '../rexer'
-import { Matcher } from '../matcher'
+import { Method, ReXer } from '../rexer'
 
-interface Quantifier extends Matcher {
-  /**
-   * Makes quantifiers match as little characters as possible.
-   */
-  lazy(): Matcher
-  minimum: Quantifier['lazy']
-}
 export interface QuantifiersExtension {
   /**
    * Matches 1 or more of preceding tokens.
    */
-  more(): Quantifier
-  plus: QuantifiersExtension['more']
+  more(): this
+  /**
+   * Matches 1 or more of preceding tokens.
+   */
+  plus(): this
   /**
    * Matches 0 or more of preceding tokens.
    */
-  moreOrNot(): Quantifier
-  star: QuantifiersExtension['moreOrNot']
+  moreOrNot(): this
+  /**
+   * Matches 0 or more of preceding tokens.
+   */
+  star(): this
+  /**
+   * Makes quantifiers match as little characters as possible.
+   */
+  lazy(): this
+  /**
+   * Makes quantifiers match as little characters as possible.
+   */
+  minimum(): this
   /**
    * Makes preceding token optional.
    */
-  optional(): Matcher
-  unnecessary: QuantifiersExtension['optional']
-  additional: QuantifiersExtension['optional']
-
+  optional(): this
+  /**
+   * Makes preceding token optional.
+   */
+  unnecessary(): this
+  /**
+   * Makes preceding token optional.
+   */
+  additional(): this
   /**
    * Matches the expression before or QuantifiersExtension currently provided.
    * @param expr - - as string of characters or expression body ( function ).
    */
-  or(expr: string | FuncExpr<Matcher>): Matcher
-  alternative: QuantifiersExtension['or']
+  or(expr: string | FuncExpr<this>): this
+  /**
+   * Matches the expression before or QuantifiersExtension currently provided.
+   * @param expr - - as string of characters or expression body ( function ).
+   */
+  alternative(expr: string | FuncExpr<this>): this
   /**
    * Matches more of preceding tokens within given limits.
    * @param lowerLimit - Lowest number of tokens to match.
    * @param upperLimit - Highest number of tokens to match.
    */
-  withLimits(lowerLimit: number, upperLimit: number): Quantifier
-  quantify: QuantifiersExtension['withLimits']
+  withLimits(lowerLimit: number, upperLimit: number): this
+  /**
+   * Matches more of preceding tokens within given limits or for specific number.
+   * @param lowerLimit - Lowest or specific number of tokens to match.
+   * @param upperLimit - Highest number of tokens to match - optional for creating range.
+   */
+  quantify(lowerLimit: number, upperLimit?: number): this
 }
 /**
  * RegEx quantifiers methods ReX.js extension.
  */
-export const QuantifiersExtension: Method<Matcher>[] = [
+export const QuantifiersExtension: Method<ReXer>[] = [
   {
     name: ['or', 'alternative'],
-    func(expr: string | FuncExpr<Matcher>) {
+    func(expr: string | FuncExpr<ReXer>) {
       this.add('|')
       this.add({
         expr,
@@ -77,8 +97,12 @@ export const QuantifiersExtension: Method<Matcher>[] = [
   },
   {
     name: ['withLimits', 'quantify'],
-    func(lowerLimit: number, upperLimit: number) {
-      this.add(`{${lowerLimit},${upperLimit}}`)
+    func(lowerLimit: number, upperLimit?: number) {
+      if (upperLimit) {
+        this.add(`{${lowerLimit},${upperLimit}}`)
+      } else {
+        this.add(`{${lowerLimit}}`)
+      }
 
       return this
     },

@@ -75,4 +75,12 @@ describe('ReX Matcher Functions Test', () => {
       expect(expr.containsFlag('g')).toBeFalsy()
     })
   })
+  describe('Last index set', () => {
+    const expr = new Matcher()
+      .find('regex')
+      .setLastIndex(6)
+      .matchAll('regex regex')[0][0]
+
+    expect(expr).toBe('regex')
+  })
 })

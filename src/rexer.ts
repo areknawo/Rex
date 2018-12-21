@@ -8,8 +8,8 @@ export interface Method<T> {
   func: (this: T, ...params: any[]) => T
 }
 
-interface Snippets<T> {
-  [key: string]: OperationConfig<T> | string
+interface Snippets<T extends ReXer> {
+  [key: string]: OperationConfig<T> | string | T
 }
 /**
  * Base class for constructing regExs.
@@ -31,11 +31,12 @@ export class ReXer {
    * Array of created
    */
   private snippets: Snippets<this> = {}
+
   /**
    * Appends operation to current channel.
    * @param operation - Operation to append.
    */
-  public add = (operationConfig: OperationConfig<this> | string) => {
+  public add(operationConfig: OperationConfig<this> | string | this) {
     const operation = new Operation(operationConfig)
     this.operationChannels[this.channelIndex].push(operation)
     this.lastOperation = operation
@@ -45,7 +46,7 @@ export class ReXer {
   /**
    * Repeats last appended operation.
    */
-  public repeat = () => {
+  public repeat() {
     if (this.lastOperation) {
       this.operationChannels[this.channelIndex].push(this.lastOperation)
     } else {
@@ -55,10 +56,16 @@ export class ReXer {
     return this
   }
   /**
+   * Returns constructed matching expression.
+   */
+  public getExpr() {
+    return this.stringifyChannel(0)
+  }
+  /**
    * Appends extension method to ReXer for its later reuse.
    * @param method - Extension method.
    */
-  public useMethod = <T extends ReXer>(method: Method<T>) => {
+  public useMethod<T extends ReXer>(method: Method<T>) {
     const { name, func } = method
     if (typeof name === 'string') {
       this[name] = func
@@ -72,7 +79,7 @@ export class ReXer {
    * Appends array of extension method to ReXer for their later reuse.
    * @param method - Extension methods array.
    */
-  public useExtension = <T extends ReXer>(ext: Method<T>[]) => {
+  public useExtension<T extends ReXer>(ext: Method<T>[]) {
     for (const method of ext) {
       this.useMethod(method)
     }
@@ -82,7 +89,7 @@ export class ReXer {
    * @param name - Snippet's name.
    * @param snippet - Operation's snippet.
    */
-  public createSnippet = (name: string, snippet: OperationConfig<this> | 'string') => {
+  public createSnippet(name: string, snippet: OperationConfig<this> | string | this) {
     this.snippets[name] = snippet
 
     return this
@@ -100,7 +107,7 @@ export class ReXer {
    * Creates string from function expression.
    * @param expr - Function expression.
    */
-  public stringifyExpression = (expr: FuncExpr<this>) => {
+  public stringifyExpression(expr: FuncExpr<this>) {
     const channel = this.setChannel(this.createChannel())
     expr(this)
     const stringified = this.stringifyChannel(channel)
@@ -126,7 +133,7 @@ export class ReXer {
    * Creates new operations channel.
    * @returns New channel's index.
    */
-  public createChannel = () => {
+  public createChannel() {
     const channelIndex = this.operationChannels.push([]) - 1
 
     return channelIndex

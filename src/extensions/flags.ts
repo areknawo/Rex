@@ -9,32 +9,62 @@ export interface FlagsExtension {
    * Allows extended use of unicodes.
    * See browser support!
    */
-  extendedUnicodes(): Matcher
-  u: FlagsExtension['extendedUnicodes']
+  extendedUnicodes(): this
+  /**
+   * Allows extended use of unicodes.
+   * See browser support!
+   */
+  u(): this
+
   /**
    * Allows to regiser more than 1 matches.
    */
-  globalize(): Matcher
-  g: FlagsExtension['globalize']
-  global: FlagsExtension['globalize']
+  globalize(): this
+  /**
+   * Allows to regiser more than 1 matches.
+   */
+  global(): this
+  /**
+   * Allows to regiser more than 1 matches.
+   */
+  g(): this
+
   /**
    * Disables case sensitivity.
    */
-  ignoreCase(): Matcher
-  i: FlagsExtension['ignoreCase']
+  ignoreCase(): this
+  /**
+   * Disables case sensitivity.
+   */
+  i(): this
+
   /**
    * Takes into account new lines.
    */
-  multiline(): Matcher
-  m: FlagsExtension['multiline']
+  multiline(): this
+  /**
+   * Takes into account new lines.
+   */
+  m(): this
+
   /**
    * Register only one match, starting from selected index.
    * Automatically ignores 'globalize()' function
    * See browser support!
    */
-  singleByIndex(): Matcher
-  y: FlagsExtension['singleByIndex']
-  sticky: FlagsExtension['singleByIndex']
+  singleByIndex(): this
+  /**
+   * Register only one match, starting from selected index.
+   * Automatically ignores 'globalize()' function
+   * See browser support!
+   */
+  sticky(): this
+  /**
+   * Register only one match, starting from selected index.
+   * Automatically ignores 'globalize()' function
+   * See browser support!
+   */
+  y(): this
 }
 
 /**

@@ -22,7 +22,7 @@ describe('ReX Extensions Test', () => {
       .set(expr => {
         expr.find('aBc')
       })
-      .range('a', 'z')
+      .range('a', 'z', '0', '9')
       .negate()
       .anyButBreak()
       .wordChar()
@@ -33,7 +33,7 @@ describe('ReX Extensions Test', () => {
       .negate()
       .getExpr()
 
-    expect(expr).toBe('[^AbC][aBc][^a-z].\\W\\D\\S')
+    expect(expr).toBe('[^AbC][aBc][^a-z0-9].\\W\\D\\S')
   })
   test('Escaped Characters Extension', () => {
     const expr = new Matcher()
@@ -51,7 +51,7 @@ describe('ReX Extensions Test', () => {
       .codeZero()
       .getExpr()
 
-    expect(expr).toBe('\\021\\xff\\uffff\\u{eeeee}\\cZ\\t\\n\\v\\f\\r\\0')
+    expect(expr).toBe('\\021\\xff\\u{ffff}\\u{eeeee}\\cZ\\t\\n\\v\\f\\r\\0')
   })
   test('Flags Extension', () => {
     const expr = new Matcher()
@@ -104,12 +104,13 @@ describe('ReX Extensions Test', () => {
       .find('x')
       .optional()
       .find('x')
+      .quantify(3)
       .or('y')
       .find('x')
       .withLimits(0, 2)
       .getExpr()
 
-    expect(expr).toBe('x+?x*x?x|yx{0,2}')
+    expect(expr).toBe('x+?x*x?x{3}|yx{0,2}')
   })
   test('Replace Extension', () => {
     const expr = new Replacer()

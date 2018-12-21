@@ -2,37 +2,45 @@
  * @module GroupExtension
  */
 import { FuncExpr } from '../operation'
-import { Method } from '../rexer'
-import { Matcher } from '../matcher'
+import { Method, ReXer } from '../rexer'
 
 export interface GroupExtension {
   /**
    * Sets name of preceding expression.
    * @param name -  Name for the previously applied expression.
    */
-  as(name: string): Matcher
+  as(name: string): this
   /**
    * Captures multiple characters together.
    * Negate creates group of characters but doesn't capture them.
    * @param expr - Set's body as string of characters or expression body ( function ).
    */
-  capture(expr: string | FuncExpr<Matcher>): Matcher
-  group: GroupExtension['capture']
+  capture(expr: string | FuncExpr<this> | this): this
+  /**
+   * Captures multiple characters together.
+   * Negate creates group of characters but doesn't capture them.
+   * @param expr - Set's body as string of characters or expression body ( function ).
+   */
+  group(expr: string | FuncExpr<this> | this): this
 
   /**
    * Matches result of previous group.
    * @param name - Name of expression to be referenced. Previously set by 'as()' method.
    */
-  ref(name: string): Matcher
-  reference: GroupExtension['ref']
+  ref(name: string): this
+  /**
+   * Matches result of previous group.
+   * @param name - Name of expression to be referenced. Previously set by 'as()' method.
+   */
+  reference(name: string): this
 }
 /**
  * RegEx grouping-related methods ReX.js extension.
  */
-export const GroupExtension: Method<Matcher>[] = [
+export const GroupExtension: Method<ReXer>[] = [
   {
     name: ['capture', 'group'],
-    func(expr: string | FuncExpr<Matcher>) {
+    func(expr: string | FuncExpr<ReXer> | ReXer) {
       this.add({
         expr,
         closure: {

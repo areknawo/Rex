@@ -1,28 +1,30 @@
 /**
  * @module AnchorsExtension
  */
-import { Method } from '../rexer'
-import { Matcher } from '../matcher'
+import { Method, ReXer } from '../rexer'
 
 export interface AnchorsExtension {
   /**
    * Matches beginning of passed string or line ( if multiline is applied ).
    */
-  begin(): Matcher
+  begin(): this
   /**
    * Matches ending of passed string or line ( if multiline is applied ).
    */
-  end(): Matcher
+  end(): this
   /**
    * States that match starts with non-word character e.g. space, -, tab etc.
    */
-  wordBoundary(): Matcher
-  boundary: AnchorsExtension['wordBoundary']
+  wordBoundary(): this
+  /**
+   * States that match starts with non-word character e.g. space, -, tab etc.
+   */
+  boundary(): this
 }
 /**
  * RegEx anchor-related methods ReX.js extension.
  */
-export const AnchorsExtension: Method<Matcher>[] = [
+export const AnchorsExtension: Method<ReXer>[] = [
   {
     name: 'begin',
     func() {

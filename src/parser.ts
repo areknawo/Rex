@@ -22,6 +22,10 @@ export class Parser {
    */
   public expr: string = ''
   /**
+   * Index to start parsing from.
+   */
+  public lastIndex: number = 0
+  /**
    * Parser regEx polyfiller.
    */
   private polyfiller = new Polyfiller()
@@ -48,16 +52,6 @@ export class Parser {
     this.regEx = undefined
   }
   /**
-   * Tests string against regEx and returns boolean if matched.
-   * Similar to 'RegExp.test()' method.
-   * @param str - String to run operation against.
-   */
-  public test = (str: string) => {
-    const match = this.match(str)
-
-    return match && match.length > 0 ? true : false
-  }
-  /**
    * Matches string against regEx and returns result as array.
    * Similar to 'RegExp.exec()' method.
    * @param str - String to run operation against.
@@ -67,11 +61,26 @@ export class Parser {
     if (this.regEx) {
       const result = this.regEx.exec(str)
       if (result) {
+        if (this.flags.indexOf('g') > -1) {
+          this.lastIndex = this.regEx.lastIndex
+        }
+
         return this.polyfiller.applyPolyfills(result)
       }
     }
 
     return null
+  }
+  /**
+   * Tests string against regEx and returns boolean if matched.
+   * Similar to 'RegExp.test()' method.
+   * @param str - String to run operation against.
+   */
+  public test = (str: string) => {
+    this.lastIndex = 0
+    const match = this.match(str)
+
+    return match && match.length > 0 ? true : false
   }
   /**
    * Matches all matches in string for regEx and returns array of result arrays.
@@ -80,6 +89,7 @@ export class Parser {
   public matchAll = (str: string) => {
     const results: Result[] = []
     let addedGFlag = false
+    this.lastIndex = 0
     if (this.flags.indexOf('g') === -1) {
       addedGFlag = true
       this.update(this.expr, `${this.flags.join('')}g`)
@@ -106,6 +116,7 @@ export class Parser {
    * @param str - String to run operation against.
    */
   public search = (str: string) => {
+    this.lastIndex = 0
     const match = this.match(str)
 
     return match && match.index ? match.index : -1
@@ -137,8 +148,9 @@ export class Parser {
    * Preprocesses RegEx execution.
    * @param str - String to run operation against.
    */
-  private preprocess = () => {
+  private preprocess() {
     const expr = this.polyfiller.mapPolyfills(this.expr)
     this.regEx = new RegExp(expr, this.flags.join(''))
+    this.regEx.lastIndex = this.lastIndex
   }
 }

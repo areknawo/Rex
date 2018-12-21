@@ -15,7 +15,7 @@
     "newline-before-return":true,
     "trailing-comma":true,
     "semicolon":false,
-    "completed-docs": true,
+    "completed-docs": ["classes", "functions", "methods"],
     "jsdoc-format": true
   },
   "linterOptions": {

@@ -19,7 +19,6 @@ describe('ReX Replacer Functions Test', () => {
           .as('ending'),
         'RegEx RegEx',
       )
-
     expect(expr).toBe('Regular Expression RegEx')
   })
   test('ReplaceAll', () => {

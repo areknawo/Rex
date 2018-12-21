@@ -14,21 +14,20 @@ describe('ReXer Functions', () => {
   })
   test('Snippet', () => {
     const expr = new Matcher()
-      .createSnippet('RegEx', {
-        expr: expr => {
-          expr
-            .capture(expr => {
-              expr.find('Reg').or('Regular')
+      .createSnippet(
+        'RegEx',
+        new Matcher()
+          .capture(expr => {
+            expr.find('Reg').or('Regular')
+          })
+          .negate()
+          .capture(expr => {
+            expr.find('Ex').or(expr => {
+              expr.anyWhitespace().find('Expression')
             })
-            .negate()
-            .capture(expr => {
-              expr.find('Ex').or(expr => {
-                expr.anyWhitespace().find('Expression')
-              })
-            })
-            .negate()
-        },
-      })
+          })
+          .negate(),
+      )
       .insertSnippet('RegEx')
       .repeat()
       .getExpr()

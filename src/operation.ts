@@ -7,8 +7,8 @@ export interface FuncExpr<T> {
   (rex: T): void
 }
 
-export interface OperationConfig<T> {
-  expr: string | FuncExpr<T>
+export interface OperationConfig<T extends ReXer> {
+  expr: string | FuncExpr<T> | T
   closure?: {
     open: string
     close: string
@@ -18,11 +18,11 @@ export interface OperationConfig<T> {
 /**
  * Class representing operation appendable to ReX.js Matcher.
  */
-export class Operation<T> {
+export class Operation<T extends ReXer> {
   /**
    * RegEx part as operation body.
    */
-  public expr: string | FuncExpr<T> = ''
+  public expr: string | FuncExpr<T> | ReXer = ''
   /**
    * Operation's closures.
    */
@@ -37,8 +37,8 @@ export class Operation<T> {
   /**
    * @param config - Operation object or string.
    */
-  public constructor(config: OperationConfig<T> | string) {
-    if (typeof config === 'string') {
+  public constructor(config: OperationConfig<T> | string | T) {
+    if (typeof config === 'string' || config instanceof ReXer) {
       this.expr = config
     } else {
       const { expr, closure, negate } = config
@@ -51,7 +51,7 @@ export class Operation<T> {
    * Sets body of operation.
    * @param expr - Expression to set as body.
    */
-  public setExpr = (expr: string | FuncExpr<T>) => {
+  public setExpr = (expr: string | FuncExpr<T> | ReXer) => {
     this.expr = expr
   }
   /**
@@ -78,6 +78,9 @@ export class Operation<T> {
     const expr = this.expr
     if (typeof expr === 'string') {
       return open + expr + close
+    }
+    if (expr instanceof ReXer) {
+      return open + expr.getExpr() + close
     }
 
     return open + rex.stringifyExpression((expr as unknown) as FuncExpr<ReXer>) + close
