@@ -135,7 +135,7 @@
     "rollup-plugin-terser": "^3.0.0",
     "rollup-plugin-typescript2": "^0.18.1",
     "semantic-release": "^15.13.2",
-    "size-limit": "^0.21.0",
+    "size-limit": "^0.21.1",
     "strict-tslint-config": "^1.0.1",
     "travis-deploy-once": "^5.0.11",
     "ts-jest": "^22.0.0",
