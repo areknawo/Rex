@@ -125,7 +125,7 @@
     "prettier": "^1.15.3",
     "prompt": "^1.0.0",
     "replace-in-file": "^3.0.0-beta.2",
-    "rimraf": "^2.6.1",
+    "rimraf": "^2.6.3",
     "rollup": "^0.68.2",
     "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.0.0",
