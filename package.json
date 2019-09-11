@@ -140,7 +140,7 @@
     "travis-deploy-once": "^5.0.11",
     "ts-jest": "^22.0.0",
     "ts-node": "^6.0.0",
-    "tslint": "^5.18.0",
+    "tslint": "^5.20.0",
     "tslint-clean-code": "^0.2.7",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",
