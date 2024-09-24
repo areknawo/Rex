@@ -126,7 +126,7 @@
     "prompt": "^1.0.0",
     "replace-in-file": "^3.0.0-beta.2",
     "rimraf": "^2.7.1",
-    "rollup": "^0.68.2",
+    "rollup": "^4.22.4",
     "rollup-plugin-babel-minify": "^6.2.0",
     "rollup-plugin-commonjs": "^9.3.4",
     "rollup-plugin-json": "^3.0.0",
