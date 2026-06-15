@@ -100,12 +100,12 @@
     "singleQuote": true
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.40",
-    "@babel/core": "7.0.0-beta.40",
+    "@babel/cli": "7.29.7",
+    "@babel/core": "7.29.7",
     "@babel/plugin-proposal-class-properties": "7.0.0-beta.40",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.40",
-    "@babel/preset-env": "7.0.0-beta.40",
-    "@babel/preset-typescript": "7.0.0-beta.40",
+    "@babel/preset-env": "7.29.7",
+    "@babel/preset-typescript": "7.29.7",
     "@types/jest": "^22.0.0",
     "@types/node": "^10.12.24",
     "colors": "^1.4.0",
